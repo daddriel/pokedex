@@ -32,9 +32,9 @@ export const PokemonDetail: React.FC = () => {
 
   }, [])
   return (
-    <div className="flex justify-center pt-10">
-      <div className=" rounded-lg border dark:border-slate-600 p-6 grid grid-cols-2 w-[850px] gap-4 overflow-hidden shadow-lg dark:text-white dark:bg-slate-800">
-        <h3 className="col-start-1 col-span-2 text-center font-thin text-4xl uppercase mb-2">{pokemon?.name}<span> # {pokemon?.id}</span></h3>
+    <div className="flex justify-center">
+      <div className=" rounded-lg border dark:border-slate-600 p-6 grid grid-cols1 md:grid-cols-2 w-[850px] gap-4 overflow-hidden shadow-lg dark:text-white dark:bg-slate-800">
+        <h3 className="md:col-start-1 md:col-span-2 text-center font-thin text-4xl uppercase mb-2">{pokemon?.name}<span> # {pokemon?.id}</span></h3>
         <img className="w-sm" src={pokemon?.pokemon_v2_pokemonsprites[0].sprites} alt={pokemon?.name} />
         <div>
           <div className="px-6 py-4">

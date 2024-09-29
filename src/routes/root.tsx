@@ -9,6 +9,7 @@ import { ExamenLayout } from "../layouts/Examen";
 import { Page1 } from "../Examen/Page/Page1";
 import { Page2 } from "../Examen/Page/Page2";
 import { Page3 } from "../Examen/Page/Page3";
+import { PokemonPageDetail } from "../pages/PokemonPage";
 
 const routes: RouteObject[] =[
   {
@@ -25,7 +26,7 @@ const routes: RouteObject[] =[
       },
       {
         path: "pokemon/:id",
-        element: <PokemonDetail/>
+        element: <PokemonPageDetail/>
       },
     ],
   },

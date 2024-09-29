@@ -49,7 +49,7 @@ export const Pokemons: React.FC = () => {
     }
   }
   return (
-    <div className="pt-10">
+    <div className="sm:pt-10">
 
       <div className="max-w-md mx-auto">
       <TextInput
@@ -62,7 +62,7 @@ export const Pokemons: React.FC = () => {
         />
       </div>
 
-      <div className="container mx-auto grid justify-items-center md:justify-items-stretch grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 pt-20 pb-2">
+      <div className="container mx-auto grid justify-items-center md:justify-items-stretch grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 pt-3 sm:pt-20 pb-2">
         {pokemons.map((poke) => (
 
           <PokemonCard
