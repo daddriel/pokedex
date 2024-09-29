@@ -1,13 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { Flowbite } from "flowbite-react";
-import { NavBarPoke } from "../components/NavBar";
+import { NavBarExamen } from "../Examen/Components/NavBarExamen";
 
-export const DefaultLayout: React.FC = () => {
+export const ExamenLayout: React.FC = () => {
   return (
     <>
       <Flowbite>
-        <NavBarPoke />
+        <NavBarExamen />
         <Outlet />
       </Flowbite>
 

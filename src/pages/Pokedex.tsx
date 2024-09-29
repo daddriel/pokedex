@@ -1,9 +1,11 @@
 import React from "react";
+import { Pokemons } from "../components/Pokedex/PokemonsGallery";
 
 export const PokedexPage: React.FC = ()=>{
   return(
     <>
-      <p>Pokedex is working</p>
+    
+      <Pokemons></Pokemons>
     </>
   )
 }

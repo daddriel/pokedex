@@ -1,10 +1,13 @@
 import axios from "axios";
 
-const API = axios.create({
+export const APIREST = axios.create({
   baseURL: "https://pokeapi.co/api/v2/",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-export default API;
+export const APIGQL = axios.create({
+  baseURL: "https://beta.pokeapi.co/graphql/v1beta"
+});
+
