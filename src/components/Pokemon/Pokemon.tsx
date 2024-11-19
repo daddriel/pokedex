@@ -20,7 +20,6 @@ export const PokemonDetail: React.FC = () => {
   const typeService = new TypesPokemon();
 
   useEffect(() => {
-    console.log(id, "id")
     if (id) {
       pokemonService.getPokemonsGQLById(Number(id)).then((response) => {
         console.log("pokemon by id", response)
@@ -28,9 +27,7 @@ export const PokemonDetail: React.FC = () => {
 
       })
     }
-
-
-  }, [])
+  })
   return (
     <div className="flex justify-center">
       <div className=" rounded-lg border dark:border-slate-600 p-6 grid grid-cols1 md:grid-cols-2 w-[850px] gap-4 overflow-hidden shadow-lg dark:text-white dark:bg-slate-800">
@@ -48,11 +45,12 @@ export const PokemonDetail: React.FC = () => {
               <div className="flex flex-wrap gap-3">
                 {pokemon?.pokemon_v2_pokemontypes.map((poketype) => {
                   const typeInfo = typeService.getTypeInfo(poketype.pokemon_v2_type.name);
-                  return (
-                    <Badge key={poketype.pokemon_v2_type.name} color={typeInfo.color} className="rounded-full px-4 text-sm" icon={GiIcons[typeInfo.icon]}>
-                      {poketype.pokemon_v2_type.name}
-                    </Badge>
-                  );
+                  if(typeInfo){
+                    return (
+                      <Badge key={poketype.pokemon_v2_type.name} color={typeInfo.color} className="rounded-full px-4 text-sm" icon={GiIcons[typeInfo.icon as keyof typeof GiIcons]}>
+                        {poketype.pokemon_v2_type.name}
+                      </Badge>
+                    );}
                 })}
               </div>
 
