@@ -32,11 +32,12 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
       <div className="flex flex-wrap gap-3">
         {pokemon.pokemon_v2_pokemontypes.map((poketype) => {
           const typeInfo = typeService.getTypeInfo(poketype.pokemon_v2_type.name);
+          if(typeInfo){
           return (
-            <Badge key={poketype.pokemon_v2_type.name} color={typeInfo.color} className="rounded-full px-4 text-sm" icon={GiIcons[typeInfo.icon]}>
+            <Badge key={poketype.pokemon_v2_type.name} color={typeInfo.color} className="rounded-full px-4 text-sm" icon={GiIcons[typeInfo.icon as keyof typeof GiIcons]}>
               {poketype.pokemon_v2_type.name}
             </Badge>
-          );
+          );}
         })}
       </div>
     </Card>

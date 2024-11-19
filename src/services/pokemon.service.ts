@@ -1,7 +1,8 @@
+import { PokemonGQL } from "../models/pokedataGQL.models";
+import { PokemonGQLById } from "../models/pokedataGQLById.models";
 import { APIGQL } from "./api";
 
 export class PokemonService {
-  static instance: PokemonService;
 
   private static readonly queryAll: string = `
   query MyQuery($limit: Int, $offset: Int) {
@@ -71,7 +72,7 @@ export class PokemonService {
   }
 `;
 
-  async getPokemonsGQL(limit: number, offset: number): Promise<any[]> {
+  async getPokemonsGQL(limit: number, offset: number): Promise<PokemonGQL[]> {
     const { data } = await APIGQL.post('', {
       query: PokemonService.queryAll,
       variables: { limit, offset }
@@ -79,7 +80,7 @@ export class PokemonService {
     return data.data.pokemon_v2_pokemon;
   }
 
-  async getPokemonsSearchGQL(limit: number, offset: number, name: string): Promise<any[]> {
+  async getPokemonsSearchGQL(limit: number, offset: number, name: string): Promise<PokemonGQL[]> {
     const { data } = await APIGQL.post('', {
       query: PokemonService.querySearch,
       variables: { limit, offset, name }
@@ -87,7 +88,7 @@ export class PokemonService {
     return data.data.pokemon_v2_pokemon;
   }
 
-  async getPokemonsGQLById(id:number): Promise<any> {
+  async getPokemonsGQLById(id:number): Promise<PokemonGQLById> {
     const { data } = await APIGQL.post('', {
       query: PokemonService.queryById,
       variables: { id }

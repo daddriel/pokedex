@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { PokemonService } from "../../services/pokemon.service";
 import { PokemonCard } from "./PokemonCard";
-import { Label, Pagination, TextInput } from "flowbite-react";
+import { Pagination, TextInput } from "flowbite-react";
 import { PokemonGQL } from "../../models/pokedataGQL.models";
 import { FiSearch } from "react-icons/fi";
 
@@ -14,7 +14,7 @@ export const Pokemons: React.FC = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [searchText, setSearchText] = useState("");
 
-  const itemsPerPage = 15;
+  const itemsPerPage = 9;
   const onPageChange = (page: number) => setCurrentPage(page);
 
   useEffect(() => {
@@ -24,7 +24,6 @@ export const Pokemons: React.FC = () => {
         .then((response) => {
           console.log("response", response)
           setPokemons(response);
-          setTotalPages(pokemons.length / itemsPerPage);
         });
     } else {
       pokeService.getPokemonsGQL(itemsPerPage, offset).then((response) => {
@@ -34,20 +33,18 @@ export const Pokemons: React.FC = () => {
         setTotalPages(Math.ceil(1050 / itemsPerPage));
       });
     }
-
-
-
-
   }, [currentPage, searchText]);
 
-  const handleKeyEnter = (e) => {
-    if(e.key === "Enter"){
-      console.log("e", e)
-
-      setSearchText(e.target.value)
-
-    }
+  interface HandleKeyEnterEvent extends React.KeyboardEvent<HTMLInputElement> {
+    target: HTMLInputElement;
   }
+
+  const handleKeyEnter = (e: HandleKeyEnterEvent) => {
+    if (e.key === "Enter") {
+      console.log("e", e);
+      setSearchText(e.target.value);
+    }
+  };
   return (
     <div className="sm:pt-10">
 
